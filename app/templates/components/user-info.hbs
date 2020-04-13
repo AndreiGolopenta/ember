@@ -1,0 +1,28 @@
+<li class="user-info__li">
+    <strong>User:</strong>
+    {{fullName}}
+</li>
+<li class="user-info__li">
+    <strong>Email: </strong>{{user.email}}
+</li>
+<li class="user-info__li">
+    <strong>Points: </strong>{{user.points}}
+</li>
+<li class="user-info__li">
+    <strong>Status: </strong>{{online-status user.online}}
+</li>
+<div class="user-info__actions">
+    <button class="user-info__back" {{action "goBack"}}>Back</button>
+    <button class="user-info__edit" {{action "goToeditUser"}}>Edit</button>
+    <button class="user-info__delete" {{action "openDeleteModal"}}>Delete</button>
+</div>
+
+<div class={{if deleteBolean "modal--active" "modal"}}>
+    <div class={{modalClass}}>
+        <p class="modal__text">Are you sure you want to delete user: Test user <strong>{{fullName}}</strong> ?</p>
+        <div class="modal__actions">
+            <button class="modal__btn-cancel" {{action "cancelRemove"}}>Cancel</button>
+            <button class="modal__btn-delete" {{action "handleRemoveUser" user}}>Delete</button>
+        </div>
+    </div>
+</div>

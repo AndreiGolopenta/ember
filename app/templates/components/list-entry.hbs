@@ -1,0 +1,6 @@
+<div class="user-list__user-name">
+    {{fullName}}
+</div>
+<div class={{if user.online "user-list__user-status--online" "user-list__user-status--offline"}}>
+    {{online-status user.online}}
+</div>

@@ -1,0 +1,375 @@
+@import './variables';
+@import './mixins';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $color-grey-light-1;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol';
+    color: $color-text;
+}
+
+.navigation {
+    height: 6rem;
+    font-size: 1.8rem;
+    box-shadow: $box-shadow-3;
+    background-color: $color-blue-2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    &__link {
+        color: $color-grey-light-4;
+        height: 70%;
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+
+        &.active {
+            color: $color-white;
+            border-bottom: 2px solid $color-white;
+        }
+    }
+
+    &__total-users {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 4rem;
+        color: $color-blue-2;
+        background-color: $color-white;
+        border: 2px solid $color-blue-1;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        box-shadow: $box-shadow-3;
+        font-weight: 500;
+    }
+}
+
+.footer {
+    height: 4rem;
+    box-shadow: $box-shadow-3;
+    background-color: $color-blue-2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-white;
+    font-size: 1.6rem;
+}
+
+.outlet {
+    min-height: calc(100vh - 10rem);
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.home {
+    &__logo {
+        margin-top: 8rem;
+        margin-bottom: 1rem;
+    }
+
+    &__info {
+        font-weight: 500;
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: center;
+
+        &__notice {
+            color: $color-red;
+            padding-right: 0.5rem;
+        }
+    }
+}
+
+.about {
+    display: flex;
+    justify-content: center;
+
+    &__container {
+        margin-top: 8rem;
+        font-size: 2rem;
+    }
+}
+
+.user-list {
+    list-style-type: none;
+    font-size: 1.6rem;
+    width: 50rem;
+    margin-top: 10rem;
+    box-shadow: $box-shadow-3;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & > * {
+        cursor: pointer;
+    }
+
+    &__content,
+    &__header {
+        width: 95%;
+        display: flex;
+        padding: 1rem;
+        border-bottom: 1px solid rgba($color-text, 0.3);
+
+        &--last {
+            border-bottom: none;
+        }
+    }
+
+    &__user-name {
+        margin-left: 2rem;
+        flex: 1;
+    }
+
+    &__user-status {
+        &--online {
+            @include onlineOffline;
+            background-color: $color-green;
+        }
+
+        &--offline {
+            @include onlineOffline;
+            background-color: $color-red;
+        }
+
+        &--header {
+            color: $color-text;
+            flex: 0 1 25%;
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    &__header {
+        font-weight: 500;
+    }
+}
+
+.search-input {
+    top: 4rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.6rem;
+    width: 50rem;
+    box-shadow: $box-shadow-3;
+    outline: none;
+    color: $color-text;
+}
+
+.user-info {
+    height: fit-content;
+    font-size: 1.6rem;
+    list-style-type: none;
+    padding: 2rem;
+    margin-top: 5rem;
+    box-shadow: $box-shadow-2;
+    min-width: 40rem;
+
+    &__li {
+        padding: 1rem;
+    }
+
+    &__actions {
+        margin-top: 2rem;
+        padding: 2rem 1rem 1rem;
+        border-top: 1px solid rgba($color-text, 0.3);
+        display: flex;
+        align-items: center;
+    }
+
+    &__back {
+        margin-right: auto;
+        @include button($color-blue-2);
+    }
+
+    &__edit {
+        @include button($color-green);
+    }
+
+    &__delete {
+        margin-left: 1rem;
+        @include button($color-red);
+    }
+}
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: -100%;
+
+    &--active {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+        background-color: rgba($color-grey-dark-2, 0.4);
+    }
+
+    &__container {
+        transform: translateY(-100%);
+        padding: 2rem;
+        box-shadow: $box-shadow-2;
+        height: fit-content;
+        background-color: $color-grey-light-1;
+        max-width: 35rem;
+        font-size: 1.6rem;
+        transition: all 0.3s ease-in-out;
+
+        &--active {
+            transform: translateY(80%);
+        }
+    }
+
+    &__actions {
+        margin-top: 1rem;
+        border-top: 1px solid rgba($color-text, 0.3);
+        padding-top: 1rem;
+        display: flex;
+        align-items: center;
+    }
+
+    &__text {
+        padding-bottom: 1.6rem;
+    }
+
+    &__btn-cancel {
+        @include button($color-blue-2);
+        margin-left: auto;
+    }
+
+    &__btn-delete {
+        @include button($color-red);
+        margin-left: 1rem;
+    }
+}
+
+.message {
+    width: 42rem;
+    box-shadow: $box-shadow-2;
+    height: fit-content;
+    border-radius: 5px;
+    font-size: 1.6rem;
+    margin-top: 12rem;
+    overflow: hidden;
+
+    &__text {
+        display: flex;
+        align-items: center;
+    }
+
+    &__icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 700;
+        font-size: 2rem;
+        color: $color-white;
+        background-color: $color-blue-2;
+        margin-right: 1rem;
+        flex: 0 1 5rem;
+        padding: 1.5rem;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 65%;
+            height: 60%;
+            border: 1.5px solid $color-white;
+            border-radius: 50%;
+        }
+    }
+}
+
+.user-edit {
+    height: fit-content;
+    width: 40rem;
+    box-shadow: $box-shadow-3;
+    border-radius: 5px;
+    padding: 2rem 3rem;
+    margin-top: 4rem;
+    font-size: 1.6rem;
+
+    &__title {
+        margin-bottom: 2rem;
+    }
+
+    &__formControl {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.5rem;
+
+        &__label {
+            font-size: 1.4rem;
+            margin-bottom: 0.4rem;
+            margin-left: 1rem;
+        }
+
+        &__input {
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            border: 1px solid rgba($color-text, 0.2);
+            outline: none;
+        }
+
+        &__error {
+            font-size: 1.3rem;
+            color: $color-red;
+            margin-left: 1rem;
+        }
+
+        &--radio {
+            margin-left: 1rem;
+
+            label {
+                margin-right: 0.5rem;
+            }
+        }
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    &__go-back-btn {
+        @include button($color-blue-2);
+        margin-left: auto;
+    }
+
+    &__update-btn {
+        @include button($color-blue-2);
+        margin-left: 0.7rem;
+    }
+}

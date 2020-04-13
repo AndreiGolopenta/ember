@@ -1,0 +1,84 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "firstName": "Mihai",
+            "lastName": "Popescu",
+            "email": "mihai@gmail.com",
+            "points": 1500,
+            "online": false
+        },
+        {
+            "id": 2,
+            "firstName": "Oana",
+            "lastName": "Dumitrescu",
+            "email": "oana@gmail.com",
+            "points": 2500,
+            "online": true
+        },
+        {
+            "id": 3,
+            "firstName": "Cornel",
+            "lastName": "Ionescu",
+            "email": "cornel@gmail.com",
+            "points": 1000,
+            "online": false
+        },
+        {
+            "id": 4,
+            "firstName": "Iulia",
+            "lastName": "Marinescu",
+            "email": "iulia@gmail.com",
+            "points": 1800,
+            "online": true
+        },
+        {
+            "id": 5,
+            "firstName": "Radu",
+            "lastName": "Popescu",
+            "email": "radu@gmail.com",
+            "points": 4200,
+            "online": true
+        },
+        {
+            "id": 6,
+            "firstName": "Vlad",
+            "lastName": "Ionescu",
+            "email": "vlad@gmail.com",
+            "points": 3100,
+            "online": true
+        },
+        {
+            "id": 7,
+            "firstName": "Corina",
+            "lastName": "Ionescu",
+            "email": "corina@gmail.com",
+            "points": 820,
+            "online": false
+        },
+        {
+            "id": 8,
+            "firstName": "Radu",
+            "lastName": "Popescu",
+            "email": "radu@gmail.com",
+            "points": 2200,
+            "online": true
+        },
+        {
+            "id": 9,
+            "firstName": "Maria",
+            "lastName": "Ionescu",
+            "email": "maria@gmail.com",
+            "points": 3150,
+            "online": false
+        },
+        {
+            "id": 10,
+            "firstName": "Monica",
+            "lastName": "Popescu",
+            "email": "monica@gmail.com",
+            "points": 2800,
+            "online": true
+        }
+    ]
+}
