@@ -10,9 +10,22 @@ const {
     set,
 } = Ember;
 
+function utility() {
+    const service = get(this, 'service');
+    const id = service.getId();
+    set(this, 'firstName', get(this, 'user.firstName'));
+    set(this, 'lastName', get(this, 'user.lastName'));
+    set(this, 'email', get(this, 'user.email'));
+    set(this, 'points', get(this, 'user.points'));
+    set(this, 'status', get(this, 'user.online'));
+    this.transitionToRoute(`/users/${id}`);
+}
+
 export default Controller.extend({
-    user: alias('model'),
+    user: alias('model.user'),
     service: service('selected-user'),
+    formValid: true,
+
     firstName: computed('user.firstName', {
         get() {
             return get(this, 'user.firstName');
@@ -46,12 +59,11 @@ export default Controller.extend({
             set(this, 'user.email', get(this, 'email'));
             set(this, 'user.points', get(this, 'points'));
             set(this, 'user.online', get(this, 'status'));
+            utility.call(this);
         },
 
         goBack() {
-            const service = get(this, 'service');
-            const id = service.getId();
-            this.transitionToRoute(`/users/${id}`);
+            utility.call(this);
         },
 
         handleInput(value) {
@@ -59,6 +71,14 @@ export default Controller.extend({
             const lastName = $('#lastName').val();
             const email = $('#email').val();
             const points = $('#points').val();
+            const formValid = [firstName, lastName, email, points].filter(
+                (input) => input.length !== 0
+            ).length;
+            if (formValid !== 4) {
+                set(this, 'formValid', false);
+            } else {
+                set(this, 'formValid', true);
+            }
 
             switch (value) {
                 case 'firstName': {

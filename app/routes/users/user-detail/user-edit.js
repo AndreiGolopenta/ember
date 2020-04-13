@@ -11,6 +11,8 @@ export default Route.extend({
 
     model() {
         const service = get(this, 'service');
-        return this.store.peekRecord('user', service.getId());
+        return {
+            user: this.store.peekRecord('user', service.getId()),
+        };
     },
 });
