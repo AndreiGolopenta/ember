@@ -45,7 +45,8 @@ body {
 
         &.active {
             color: $color-white;
-            border-bottom: 2px solid $color-white;
+            background-color: rgba($color-blue-1, 0.3);
+            border-radius: 5px;
         }
     }
 

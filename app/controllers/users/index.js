@@ -33,9 +33,8 @@ export default Controller.extend({
     actions: {
         viewUserDetail(user) {
             const service = get(this, 'service');
-
-            this.transitionToRoute('users.user-detail', user);
             service.setId(user.get('id'));
+            this.transitionToRoute('users.user-detail', user);
         },
     },
 });
