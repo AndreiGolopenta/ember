@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import navigateBack from '../utils/navigate-back';
+import regexCheck from '../utils/validation-email';
 
 const {
     Component,
@@ -7,7 +8,7 @@ const {
     inject: { service },
     get,
     set,
-    $
+    $,
 } = Ember;
 
 export default Component.extend({
@@ -62,10 +63,13 @@ export default Component.extend({
             const formValid = [firstName, lastName, email, points].filter(
                 (input) => input.length !== 0
             ).length;
+
             if (formValid !== 4) {
                 set(this, 'formValid', false);
-            } else {
+            } else if (regexCheck(email)) {
                 set(this, 'formValid', true);
+            } else {
+                set(this, 'formValid', false);
             }
 
             switch (value) {
@@ -103,4 +107,3 @@ export default Component.extend({
         },
     },
 });
-

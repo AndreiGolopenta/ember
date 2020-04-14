@@ -1,34 +1,37 @@
 <form class="user-edit">
     <h2 class="user-edit__title">User Edit</h2>
     <div class="user-edit__formControl">
-        <label class="user-edit__formControl__label" for="firstName">First Name</label>
+        <label class={{validation-required firstName "label"}} for="firstName">First Name</label>
         <input oninput={{ action "handleInput" "firstName"}} type="text" value={{firstName}} id="firstName"
-            class="user-edit__formControl__input">
-        <span class="{{validation-required firstName}}">
+            class={{validation-required firstName "input"}}>
+        <span class={{validation-required firstName "span"}}>
             First Name is <strong>required</strong>!
         </span>
     </div>
     <div class="user-edit__formControl">
-        <label class="user-edit__formControl__label" for="lastName">Last Name</label>
+        <label class={{validation-required lastName "label"}} for="lastName">Last Name</label>
         <input oninput={{ action "handleInput" "lastName"}} type="text" value={{lastName}} id="lastName"
-            class="user-edit__formControl__input">
-        <span class="{{validation-required lastName}}">
+            class={{validation-required lastName "input"}}>
+        <span class={{validation-required lastName "span"}}>
             Last Name is <strong>required</strong>!
         </span>
     </div>
     <div class="user-edit__formControl">
-        <label class="user-edit__formControl__label" for="email">Email</label>
+        <label class={{validation-email email "label"}} for="email">Email</label>
         <input oninput={{ action "handleInput" "email"}} type="email" value={{email}} id="email"
-            class="user-edit__formControl__input">
-        <span class="{{validation-required email}}">
+            class={{validation-email email "input"}}>
+        <span class={{validation-required email "span"}}>
             Email is <strong>required</strong>!
+        </span>
+        <span class={{validation-email email "span"}}>
+            Please enter a <strong>valid</strong> email address.
         </span>
     </div>
     <div class="user-edit__formControl">
-        <label class="user-edit__formControl__label" for="points">Points</label>
+        <label class={{validation-required points "label"}} for="points">Points</label>
         <input oninput={{ action "handleInput" "points"}} type="number" value={{points}} id="points"
-            class="user-edit__formControl__input">
-        <span class="{{validation-required points}}">
+            class={{validation-required points "input"}}>
+        <span class={{validation-required points "span"}}>
             Points are <strong>required</strong>!
         </span>
     </div>
@@ -47,13 +50,8 @@
         <button type="button" class="user-edit__go-back-btn" {{action "handleGoBack"}}>
             Go Back
         </button>
-        <button 
-            disabled={{if formValid "" "disabled"}} 
-            type="button" 
-            class="user-edit__update-btn"
-            {{action "submit"}}>
+        <button disabled={{if formValid "" "disabled"}} type="button" class="user-edit__update-btn" {{action "submit"}}>
             Update
         </button>
     </div>
 </form>
-
