@@ -1,13 +1,19 @@
 import Ember from 'ember';
 
-const { Controller } = Ember;
+const {
+    Controller
+} = Ember;
 
 export default Controller.extend({
+
     actions: {
         submitForm(user) {
-            const id = this.store.peekAll('user').get('length') + 1;
+            const users = this.store.peekAll('user').map(user => user.id);
+            const id = Math.max(...users) + 1;
+
             const newUser = Object.assign({}, user, { id });
             this.store.createRecord('user', newUser);
+            this.transitionToRoute('users');
         },
     },
 });
