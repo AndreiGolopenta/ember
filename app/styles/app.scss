@@ -404,3 +404,32 @@ body {
         }
     }
 }
+
+.not-found {
+    position: absolute;
+    top: 35%;
+    font-size: 1.6rem;
+    width: 35rem;
+    height: fit-content;
+    transform: translateY(-50%);
+
+    &__title {
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+
+    &__text {
+        text-align: center;
+    }
+
+    &__btn {
+        display: inline-block;
+        text-decoration: none;
+        @include button($color-blue-2);
+        transform: translateX(-50%);
+        position: absolute;
+        left: 50%;
+        bottom: -6rem;
+        
+    }
+}

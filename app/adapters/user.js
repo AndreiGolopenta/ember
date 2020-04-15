@@ -8,4 +8,8 @@ export default RESTAdapter.extend({
     pathForType() {
         return 'users';
     },
+
+    shouldReloadAll() {
+        return true;
+    },
 });
