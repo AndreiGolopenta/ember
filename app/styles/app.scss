@@ -122,6 +122,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 5px;
+    margin-bottom: 3rem;
 
     & > * {
         cursor: pointer;
@@ -191,6 +193,7 @@ body {
     margin-top: 5rem;
     box-shadow: $box-shadow-2;
     min-width: 40rem;
+    border-radius: 5px;
 
     &__li {
         padding: 1rem;
@@ -244,6 +247,7 @@ body {
         max-width: 35rem;
         font-size: 1.6rem;
         transition: all 0.3s ease-in-out;
+        border-radius: 5px;
 
         &--active {
             transform: translateY(80%);
@@ -393,6 +397,7 @@ body {
         margin-left: auto;
     }
 
+    &__add-btn,
     &__update-btn {
         @include button($color-blue-2);
         margin-left: 0.7rem;
@@ -401,6 +406,18 @@ body {
             border: 1px solid rgba($color-grey-dark-3, 0.5);
             color: $color-grey-dark-2;
             background: rgba($color-grey-dark-3, 0.2);
+        }
+    }
+
+    &__add-btn {
+        margin-left: auto;
+    }
+
+    &__info {
+        font-size: 1.3rem;
+
+        &__required {
+            color: $color-red;
         }
     }
 }

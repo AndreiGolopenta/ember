@@ -1,0 +1,24 @@
+<form class="user-edit" {{action "submitForm" on="submit"}}>
+    <h2 class="user-edit__title">Add User</h2>
+    {{form-control data=firstName inputName="firstName" inputType="text" touched=false}}
+    {{form-control data=lastName inputName="lastName" inputType="text" touched=false}}
+    {{form-control data=email inputName="email" inputType="email" touched=false}}
+    {{form-control data=points inputName="number" inputType="number" touched=false}}
+    <div class="user-edit__formControl__label">User status</div>
+    <div class="user-edit__formControl--radio">
+        <input type="radio" name="status" id="status-online" onchange={{action (mut online) value="target.value"}} value="true">
+        <label for="status-online">Online</label>
+    </div>
+    <div class="user-edit__formControl--radio">
+        <input type="radio" name="status" id="status-offline" onchange={{action (mut online) value="target.value"}} value="false">
+        <label for="status-offline">Offline</label>
+    </div>
+    <div class="user-edit__actions">
+        <button class="user-edit__add-btn" disabled={{if valid "" "disabled"}}>
+            Add User
+        </button>
+    </div>
+    <div class="user-edit__info">
+        <span class="user-edit__info__required">*</span> All fields are required.
+    </div>
+</form>

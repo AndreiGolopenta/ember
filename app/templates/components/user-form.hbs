@@ -1,10 +1,9 @@
 <form class="user-edit">
     <h2 class="user-edit__title">User Edit</h2>
-    {{form-control data=firstName inputName="firstName" inputType="text"}}
-    {{form-control data=lastName inputName="lastName" inputType="text"}}
-    {{form-control data=email inputName="email" inputType="email"}}
-    {{form-control data=points inputName="number" inputType="number"}}
-
+    {{form-control data=firstName inputName="firstName" inputType="text" touched=true}}
+    {{form-control data=lastName inputName="lastName" inputType="text" touched=true}}
+    {{form-control data=email inputName="email" inputType="email" touched=true}}
+    {{form-control data=points inputName="number" inputType="number" touched=true}}
     <div class="user-edit__formControl__label">User status</div>
     <div class="user-edit__formControl--radio">
         <input oninput={{action "radioBtn"}} type="radio" name="status" id="status-online" value="true"

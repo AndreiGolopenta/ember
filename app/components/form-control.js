@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { Component, computed, get } = Ember;
+const { Component, computed, get, set } = Ember;
 
 export default Component.extend({
     classNames: ['user-edit__formControl'],
@@ -18,4 +18,10 @@ export default Component.extend({
             return inputType === 'number' ? 'are' : 'is';
         },
     }),
+
+    actions: {
+        toggle() {
+            set(this, 'touched', true);
+        },
+    },
 });
