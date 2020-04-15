@@ -13,7 +13,6 @@ const {
 
 export default Component.extend({
     service: service('selected-user'),
-    formValid: true,
 
     firstName: computed('user.firstName', {
         get() {
@@ -41,6 +40,21 @@ export default Component.extend({
         },
     }),
 
+    formValid: computed('firstName', 'lastName', 'email', 'points', {
+        get() {
+            const firstName = get(this, 'firstName');
+            const lastName = get(this, 'lastName');
+            const email = get(this, 'email');
+            const points = get(this, 'points');
+            let valid = [firstName, lastName, email, points].filter(
+                (input) => input.length !== 0
+            ).length;
+
+            valid = regexCheck(email) ? valid + 1 : valid;
+            return valid === 5 ? true : false;
+        },
+    }),
+
     actions: {
         submit() {
             set(this, 'user.firstName', get(this, 'firstName'));
@@ -53,43 +67,6 @@ export default Component.extend({
 
         handleGoBack() {
             navigateBack.call(this);
-        },
-
-        handleInput(value) {
-            const firstName = $('#firstName').val();
-            const lastName = $('#lastName').val();
-            const email = $('#email').val();
-            const points = $('#points').val();
-            const formValid = [firstName, lastName, email, points].filter(
-                (input) => input.length !== 0
-            ).length;
-
-            if (formValid !== 4) {
-                set(this, 'formValid', false);
-            } else if (regexCheck(email)) {
-                set(this, 'formValid', true);
-            } else {
-                set(this, 'formValid', false);
-            }
-
-            switch (value) {
-                case 'firstName': {
-                    set(this, value, firstName);
-                    return;
-                }
-                case 'lastName': {
-                    set(this, value, lastName);
-                    return;
-                }
-                case 'email': {
-                    set(this, value, email);
-                    return;
-                }
-                case 'points': {
-                    set(this, value, points);
-                    return;
-                }
-            }
         },
 
         radioBtn() {

@@ -1,0 +1,12 @@
+<label class={{if emailError (validation-email data "label") (validation-required data "label")}} for={{inputName}}>
+    {{label-name inputName}}
+</label>
+    {{input type=inputType value=data id=inputName class=(if emailError (validation-email data "input") (validation-required data "input"))}}
+<span class={{validation-required data "span"}}>
+    {{label-name inputName}} {{errorMessage}} <strong>required</strong>!
+</span>
+{{#if emailError}}
+    <span class={{validation-email data "span"}}>
+        Please enter a <strong>valid</strong> email address.
+    </span>
+{{/if}}
