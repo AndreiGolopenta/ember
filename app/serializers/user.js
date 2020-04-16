@@ -8,4 +8,9 @@ export default RESTSerializer.extend({
         payload = { users: payload };
         return this._super(store, primaryModelClass, payload, id, requestType);
     },
+
+    normalizeSingleResponse(store, primaryModelClass, payload, id, requestType) {
+        payload = { user: payload };
+        return this._super(store, primaryModelClass, payload, id, requestType);
+    },
 });

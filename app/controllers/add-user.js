@@ -12,7 +12,7 @@ export default Controller.extend({
             const id = Math.max(...users) + 1;
 
             const newUser = Object.assign({}, user, { id });
-            this.store.createRecord('user', newUser);
+            this.store.createRecord('user', newUser).save();
             this.transitionToRoute('users');
         },
     },

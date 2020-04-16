@@ -30,7 +30,7 @@ export default Component.extend({
             const lastName = get(this, 'lastName');
             const email = get(this, 'email');
             const points = get(this, 'points');
-            const online = get(this, 'online');
+            const online = get(this, 'online') === 'true' ? true : false;         
             const newUser = { firstName, lastName, email, points, online };
             const handleSubmit = get(this, 'handleSubmit');
             handleSubmit(newUser);

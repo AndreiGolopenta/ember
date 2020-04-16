@@ -62,6 +62,8 @@ export default Component.extend({
             set(this, 'user.email', get(this, 'email'));
             set(this, 'user.points', get(this, 'points'));
             set(this, 'user.online', get(this, 'status'));
+            const user = get(this, 'user');
+            user.save();
             navigateBack.call(this);
         },
 

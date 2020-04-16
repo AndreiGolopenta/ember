@@ -19,6 +19,7 @@ export default Controller.extend({
         handleRemoveUser(user) {
             this.transitionToRoute('users');
             this.store.deleteRecord(user);
+            user.save();
         },
 
         handleEditUSer() {

@@ -26,8 +26,8 @@ module.exports = function (environment) {
         // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
         // ENV.APP.LOG_VIEW_LOOKUPS = true;
         ENV.contentSecurityPolicy = {
-            'script-src': "'self' http://localhost:3000/users",
-            'connect-src': "'self' http://localhost:3000/users",
+            'script-src': "'self' *",
+            'connect-src': "'self' *",
         };
     }
 

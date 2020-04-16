@@ -6,11 +6,11 @@
     {{form-control data=points inputName="number" inputType="number" touched=false}}
     <div class="user-edit__formControl__label">User status</div>
     <div class="user-edit__formControl--radio">
-        <input type="radio" name="status" id="status-online" onchange={{action (mut online) value="target.value"}} value="true">
+        <input type="radio" name="status" id="status-online" onchange={{action (mut online) value="target.value"}} value='true'>
         <label for="status-online">Online</label>
     </div>
     <div class="user-edit__formControl--radio">
-        <input type="radio" name="status" id="status-offline" onchange={{action (mut online) value="target.value"}} value="false">
+        <input type="radio" name="status" id="status-offline" onchange={{action (mut online) value="target.value"}} value='false'>
         <label for="status-offline">Offline</label>
     </div>
     <div class="user-edit__actions">

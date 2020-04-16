@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 const {
     Controller,
-    computed: { alias },
+    computed: { alias }
 } = Ember;
 
 export default Controller.extend({
