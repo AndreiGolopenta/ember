@@ -1,0 +1,12 @@
+<label class="user-list__pagination__label">Page</label>
+{{input 
+    min="1" 
+    max=numberOfPages 
+    value=page type="number" 
+    class="user-list__pagination__input" 
+    change=(action "updatePage") 
+    key-up=(action "updatePage")
+}}
+<span class="user-list__pagination__info">of {{numberOfPages}}</span>
+<button class="user-list__pagination__prev" {{action "previousPage"}}>Previous</button>
+<button class="user-list__pagination__next" {{action "nextPage"}}>Next</button>

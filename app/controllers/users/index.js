@@ -5,6 +5,7 @@ const {
     computed,
     get,
     inject: { service },
+    set,
 } = Ember;
 
 export default Controller.extend({
@@ -12,18 +13,22 @@ export default Controller.extend({
     sortBy: 'none',
     service: service('selected-user'),
     searchValue: '',
+    page: 1,
+    pageSlice: 0,
+    numberOfPages: null,
 
-    lastIndex: computed('users.[]', {
+    lastIndex: computed('model.users.[]', {
         get() {
             return get(this, 'users.length') - 1;
         },
     }),
 
-    users: computed('model.users.[]', 'searchValue', 'sortBy', {
+    users: computed('model.users.[]', 'searchValue', 'sortBy', 'pageSlice', {
         get() {
             const users = get(this, 'model.users');
             const searchValue = get(this, 'searchValue');
             const sortBy = get(this, 'sortBy');
+            const pageSlice = get(this, 'pageSlice');
 
             const filterUsers = users.filter((user) => {
                 return `${user.get('firstName')} ${user.get('lastName')}`
@@ -49,9 +54,11 @@ export default Controller.extend({
                         break;
                     }
                 }
-                return result;
+                set(this, 'numberOfPages', Math.ceil(result.length / 8));
+                return result.slice(pageSlice, pageSlice + 8);
             } else {
-                return filterUsers;
+                set(this, 'numberOfPages', Math.ceil(filterUsers.length / 8));
+                return filterUsers.slice(pageSlice, pageSlice + 8);
             }
         },
     }),
@@ -61,6 +68,23 @@ export default Controller.extend({
             const service = get(this, 'service');
             service.setId(user.get('id'));
             this.transitionToRoute('users.user-detail', user);
+        },
+
+        changePage(page) {
+            const pageSlice = get(this, 'pageSlice');
+            const numberOfPages = get(this, 'numberOfPages');
+            const actualPage = pageSlice / 8 + 1;
+            if (!page) {
+                return set(this, 'page', actualPage);
+            } else if (page > numberOfPages) {
+                return set(this, 'page', actualPage);
+            } else if (page < 1) {
+                return set(this, 'page', actualPage);
+            } else {
+                const pageSlice = (page - 1) * 8;
+                set(this, 'pageSlice', pageSlice);
+                set(this, 'page', page);
+            }
         },
     },
 });

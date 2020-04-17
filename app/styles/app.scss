@@ -168,6 +168,40 @@ body {
     &__header {
         font-weight: 500;
     }
+
+    &__pagination {
+        width: 50rem;
+        padding: 1.5rem 4rem;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+
+        &__input {
+            padding: 0.5rem 0.7rem;
+            width: 5rem;
+            border-radius: 4px;
+            border: none;
+            box-shadow: $box-shadow-1;
+            font-size: 1.4rem;
+            outline: none;
+            margin: 0 0.7rem;
+        }
+
+        &__info,
+        &__label {
+            transform: translateY(-2px);
+        }
+
+        &__prev {
+            @include button($color-blue-2);
+            margin-left: auto;
+            margin-right: 1rem;
+        }
+
+        &__next {
+            @include button($color-blue-2);
+        }
+    }
 }
 
 .filter-sort {
@@ -224,6 +258,7 @@ body {
             outline: none;
             cursor: pointer;
             padding: 1rem 1.8rem 0;
+            letter-spacing: 0.1rem;
 
             &:focus {
                 border-radius: 5px 5px 0 0;

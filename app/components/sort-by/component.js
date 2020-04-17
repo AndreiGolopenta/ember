@@ -21,4 +21,11 @@ export default Component.extend({
         window.removeEventListener('click', toggleClassOnList);
         this._super(...arguments);
     },
+
+    actions: {
+        select() {
+            const hadnleSelect = get(this, 'hadnleSelect');
+            hadnleSelect(1);
+        }
+    }
 });

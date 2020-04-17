@@ -1,6 +1,6 @@
 <div class="filter-sort">
     {{input class="filter-sort__search" type="text" value=searchValue placeholder="Search user..."}}
-    {{sort-by sortBy=sortBy}}
+    {{sort-by sortBy=sortBy hadnleSelect=(action "changePage")}}
 </div>
 {{#if users.length}}
     <ul class="user-list">
@@ -9,8 +9,9 @@
             <div class="user-list__user-status--header">Status</div>
         </li>
         {{#each users as |user index|}}
-            {{list-entry user=user click=(action "viewUserDetail" user) lastComponent=(truthy-falsy index lastIndex)}}
+            {{list-entry user=user click=(action "viewUserDetail" user)}}
         {{/each}}
+        {{app-pagination page=page numberOfPages=numberOfPages handleChangePage=(action "changePage")}}
     </ul>
 {{else}}
     {{empty-list}}
