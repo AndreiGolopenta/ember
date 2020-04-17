@@ -1,0 +1,14 @@
+<label class="filter-sort__sort-by__label">Sort by :</label>
+<span class="filter-sort__sort-by__icon">&dtrif;</span>
+<input type="text" readonly value={{optionSelected}} class="filter-sort__sort-by__input">
+<ul class="filter-sort__list">
+    <li class="filter-sort__list__option">
+        {{link-to "Online & Offline Users" "users" (query-params sortBy="none") class="filter-sort__list__link"}}
+    </li>
+    <li class="filter-sort__list__option">
+        {{link-to "Online Users" "users" (query-params sortBy="online") class="filter-sort__list__link"}}
+    </li>
+    <li class="filter-sort__list__option">
+        {{link-to "Offline Users" "users" (query-params sortBy="offline") class="filter-sort__list__link"}}
+    </li>
+</ul>

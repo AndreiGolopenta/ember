@@ -8,6 +8,8 @@ const {
 } = Ember;
 
 export default Controller.extend({
+    queryParams: ['sortBy'],
+    sortBy: 'none',
     service: service('selected-user'),
     searchValue: '',
 
@@ -17,16 +19,40 @@ export default Controller.extend({
         },
     }),
 
-    users: computed('model.users.[]', 'searchValue', {
+    users: computed('model.users.[]', 'searchValue', 'sortBy', {
         get() {
             const users = get(this, 'model.users');
             const searchValue = get(this, 'searchValue');
+            const sortBy = get(this, 'sortBy');
 
-            return users.filter((user) => {
+            const filterUsers = users.filter((user) => {
                 return `${user.get('firstName')} ${user.get('lastName')}`
                     .toLowerCase()
                     .includes(searchValue.toLowerCase());
             });
+            let result;
+            if (sortBy) {
+                let value;
+                switch (sortBy) {
+                    case 'online': {
+                        value = true;
+                        result = filterUsers.filterBy('online', value);
+                        break;
+                    }
+                    case 'offline': {
+                        value = false;
+                        result = filterUsers.filterBy('online', value);
+                        break;
+                    }
+                    case 'none': {
+                        result = filterUsers;
+                        break;
+                    }
+                }
+                return result;
+            } else {
+                return filterUsers;
+            }
         },
     }),
 

@@ -1,4 +1,7 @@
-{{input class="search-input" type="text" value=searchValue placeholder="Search user..."}}
+<div class="filter-sort">
+    {{input class="filter-sort__search" type="text" value=searchValue placeholder="Search user..."}}
+    {{sort-by sortBy=sortBy}}
+</div>
 {{#if users.length}}
     <ul class="user-list">
         <li class="user-list__header">

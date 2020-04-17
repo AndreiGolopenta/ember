@@ -116,7 +116,7 @@ body {
     list-style-type: none;
     font-size: 1.6rem;
     width: 50rem;
-    margin-top: 10rem;
+    margin-top: 11rem;
     box-shadow: $box-shadow-3;
     height: fit-content;
     display: flex;
@@ -170,19 +170,105 @@ body {
     }
 }
 
-.search-input {
+.filter-sort {
     top: 4rem;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.6rem;
     width: 50rem;
-    box-shadow: $box-shadow-3;
-    outline: none;
-    color: $color-text;
+    height: 4.5rem;
+    display: flex;
+    align-items: center;
+
+    &__search {
+        flex: 1;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.6rem;
+        box-shadow: $box-shadow-3;
+        outline: none;
+        color: $color-text;
+        margin-right: 1rem;
+    }
+
+    &__sort-by {
+        margin-left: auto;
+        flex: 0 1 20rem;
+        height: 3.84rem;
+        border-radius: 5px;
+        background-color: $color-white;
+        cursor: pointer;
+        position: relative;
+
+        &__label {
+            margin-top: 0.5rem;
+            display: block;
+            margin-left: 2rem;
+            font-size: 1rem;
+        }
+
+        &__input {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            border: none;
+            margin: auto;
+            background-color: transparent;
+            box-shadow: $box-shadow-3;
+            font-size: 1.4rem;
+            outline: none;
+            cursor: pointer;
+            padding: 1rem 1.8rem 0;
+
+            &:focus {
+                border-radius: 5px 5px 0 0;
+                border: 1px solid rgba($color-text, 0.3);
+            }
+        }
+
+        &__icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 2rem;
+            font-size: 2rem;
+        }
+    }
+
+    &__list {
+        list-style-type: none;
+        font-size: 1.4rem;
+        width: 100%;
+        position: absolute;
+        top: 4rem;
+        background-color: $color-white;
+        box-shadow: $box-shadow-3;
+        border: 1px solid rgba($color-text, 0.3);
+        border-radius: 0 0 5px 5px;
+        display: none;
+
+        &__option {
+            padding: 1rem;
+
+            &:hover {
+                background-color: rgba($color-grey-light-1, 0.8);
+            }
+        }
+
+        &__link {
+            text-decoration: none;
+            color: $color-text;
+        }
+
+        &--active {
+            display: block;
+        }
+    }
 }
 
 .user-info {
@@ -447,6 +533,5 @@ body {
         position: absolute;
         left: 50%;
         bottom: -6rem;
-        
     }
 }
