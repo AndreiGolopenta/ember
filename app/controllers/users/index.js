@@ -1,17 +1,10 @@
 import Ember from 'ember';
 
-const {
-    Controller,
-    computed,
-    get,
-    inject: { service },
-    set,
-} = Ember;
+const { Controller, computed, get, set } = Ember;
 
 export default Controller.extend({
     queryParams: ['sortBy'],
     sortBy: 'none',
-    service: service('selected-user'),
     searchValue: '',
     page: 1,
     pageSlice: 0,
@@ -65,8 +58,6 @@ export default Controller.extend({
 
     actions: {
         viewUserDetail(user) {
-            const service = get(this, 'service');
-            service.setId(user.get('id'));
             this.transitionToRoute('users.user-detail', user);
         },
 

@@ -1,0 +1,19 @@
+<div class="user-posts__header">
+    Total posts by {{user.firstName}}: <strong>{{user.posts.length}}</strong>
+</div>
+<div class="user-posts__container">
+    <ul class="user-posts__list">
+        {{#if user.posts.length}}
+            {{#each posts as |post|}}
+                {{#post-detail post=post}}
+                    <button class="user-posts__delete-btn" {{action "deletePost" post}}> x </button>
+                {{/post-detail}}
+            {{/each}}
+        {{else}}
+            <div class="user-posts__message">
+                <strong>{{user.firstName}}</strong> doesn't have any post yet.
+            </div>
+        {{/if}}
+    </ul>
+</div>
+{{yield}}

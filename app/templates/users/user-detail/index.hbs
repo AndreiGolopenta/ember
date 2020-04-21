@@ -1,2 +1,20 @@
-{{user-info user=user goBack=(action "handleGoBack") editUser=(action "handleEditUSer") deleteUser=(action "handleRemoveUser")}}
+<div class="user-detail">
+    {{user-info 
+        user=user 
+        goBack=(action "handleGoBack") 
+        editUser=(action "handleEditUSer") 
+        deleteUser=(action "handleRemoveUser")
+    }}
+    {{#add-post title=title body=body as |prop|}}
+        <button 
+            disabled={{prop.disabled}} 
+            class="add-post__submit" type="button"
+            {{action "addPost" prop.title prop.body}}
+        >
+            Add Post
+        </button>
+    {{/add-post}}
+    {{user-posts user=user handleDeletePost=(action "deletePost")}}
+</div>
+
 {{outlet}}

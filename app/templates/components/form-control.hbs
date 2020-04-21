@@ -2,7 +2,20 @@
     <label class={{if emailError (validation-email data "label") (validation-required data "label")}} for={{inputName}}>
         {{label-name inputName}}
     </label>
-        {{input type=inputType value=data id=inputName class=(if emailError (validation-email data "input") (validation-required data "input"))}}
+        {{#if textarea}}
+            {{textarea 
+                value=data 
+                id=inputName 
+                class=(if emailError (validation-email data "input") (validation-required data "input"))
+            }}
+        {{else}}
+            {{input 
+                type=inputType 
+                value=data 
+                id=inputName 
+                class=(if emailError (validation-email data "input") (validation-required data "input"))
+            }}
+        {{/if}}
     <span class={{validation-required data "span"}}>
         {{label-name inputName}} {{errorMessage}} <strong>required</strong>!
     </span>
@@ -15,5 +28,19 @@
     <label class="user-edit__formControl__label" for={{inputName}}>
         {{label-name inputName}}
     </label>
-    {{input type=inputType value=data id=inputName focus-out=(action "toggle") class="user-edit__formControl__input"}}
+    {{#if textarea}}
+        {{textarea 
+            value=data 
+            id=inputName 
+            focus-out=(action "toggle") class="user-edit__formControl__input"
+        }}
+    {{else}}
+        {{input 
+            type=inputType 
+            value=data 
+            id=inputName 
+            focus-out=(action "toggle") 
+            class="user-edit__formControl__input"
+        }}
+    {{/if}}
 {{/if}}

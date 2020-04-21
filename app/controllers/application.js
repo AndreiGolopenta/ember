@@ -6,5 +6,5 @@ const {
 } = Ember;
 
 export default Controller.extend({
-    users: alias('model'),
+    users: alias('model.users'),
 });

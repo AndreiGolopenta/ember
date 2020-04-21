@@ -5,14 +5,12 @@ import regexCheck from '../utils/validation-email';
 const {
     Component,
     computed,
-    inject: { service },
     get,
     set,
     $,
 } = Ember;
 
 export default Component.extend({
-    service: service('selected-user'),
 
     firstName: computed('user.firstName', {
         get() {

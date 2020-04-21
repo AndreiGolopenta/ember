@@ -24,4 +24,15 @@
     &:hover {
         background-color: rgba($color, 0.1);
     }
+
+    &:disabled {
+        border: 1px solid rgba($color-grey-dark-3, 0.5);
+        color: $color-grey-dark-2;
+        background: rgba($color-grey-dark-3, 0.2);
+    }
+}
+
+@mixin card {
+    box-shadow: $box-shadow-2;
+    border-radius: 5px;
 }

@@ -2,15 +2,15 @@ import Ember from 'ember';
 
 const {
     Controller,
-    computed: { alias }
+    computed: { alias },
 } = Ember;
 
 export default Controller.extend({
-    user: alias('model.user'),
+    user: alias('model'),
 
     actions: {
-        handleGoBack(id) {
-            this.transitionToRoute(`/users/${id}`);
+        handleGoBack(user) {
+            this.transitionToRoute('users.user-detail', user);
         },
     },
 });

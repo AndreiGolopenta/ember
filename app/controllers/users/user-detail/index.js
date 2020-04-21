@@ -3,17 +3,20 @@ import Ember from 'ember';
 const {
     Controller,
     computed: { alias },
-    inject: { service },
     get,
+    set
 } = Ember;
 
 export default Controller.extend({
     user: alias('model'),
-    service: service('selected-user'),
+    title: '',
+    body: '',
 
     actions: {
         handleGoBack() {
             this.transitionToRoute('users');
+            set(this, 'title', '');
+            set(this, 'body', '');
         },
 
         handleRemoveUser(user) {
@@ -23,8 +26,26 @@ export default Controller.extend({
         },
 
         handleEditUSer() {
-            const service = get(this, 'service');
-            this.transitionToRoute(`/users/${service.getId()}/edit`);
+            const user = get(this, 'user');
+            const id = user.id;
+            this.transitionToRoute(`/users/${id}/edit`, user);
         },
+
+        deletePost(post) {
+            post.deleteRecord();
+            post.save();
+        },
+
+        addPost(title, body) {
+            const posts = this.store.peekAll('post').map(post => post.id);
+            const id = Math.max(...posts) + 1;
+            const userId = parseInt(get(this, 'user').id);
+            const post = { id, userId, title, body };
+            
+            let newPost = this.store.createRecord('post', post);
+            newPost.save();
+            set(this, 'title', '');
+            set(this, 'body', '');
+        }
     },
 });

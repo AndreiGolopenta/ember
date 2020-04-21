@@ -1,8 +1,9 @@
 import DS from 'ember-data';
 
-const { Model, attr } = DS;
+const { Model, attr, hasMany } = DS;
 
 export default Model.extend({
+    posts: hasMany('post', { async: false }),
     firstName: attr('string'),
     lastName: attr('string'),
     email: attr('string'),

@@ -1,18 +1,5 @@
 import Ember from 'ember';
 
-const {
-    Route,
-    inject: { service },
-    get,
-} = Ember;
+const { Route } = Ember;
 
-export default Route.extend({
-    service: service('selected-user'),
-
-    model() {
-        const service = get(this, 'service');
-        return {
-            user: this.store.peekRecord('user', service.getId()),
-        };
-    },
-});
+export default Route.extend({});

@@ -19,6 +19,13 @@ export default Component.extend({
         },
     }),
 
+    textarea: computed('inputType', {
+        get() {
+            const inputType = get(this, 'inputType');
+            return inputType === 'textarea' ? true : false;
+        },
+    }),
+
     actions: {
         toggle() {
             set(this, 'touched', true);
