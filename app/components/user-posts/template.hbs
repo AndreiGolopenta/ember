@@ -6,7 +6,7 @@
         {{#if user.posts.length}}
             {{#each posts as |post|}}
                 {{#post-detail post=post}}
-                    <button class="user-posts__delete-btn" {{action "deletePost" post}}> x </button>
+                    <button class="user-posts__delete-btn" {{action "deletePost" post}}> &#10006; </button>
                 {{/post-detail}}
             {{/each}}
         {{else}}

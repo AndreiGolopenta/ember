@@ -943,8 +943,8 @@
     {
       "id": 101,
       "userId": 1,
-      "title": "Title",
-      "body": "Message goes here!"
+      "title": "My Post Title",
+      "body": "Message here"
     }
   ]
 }

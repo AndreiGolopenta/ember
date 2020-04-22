@@ -661,3 +661,43 @@ body {
         bottom: -6rem;
     }
 }
+
+.pop-up {
+    position: fixed;
+    bottom: 6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 5rem;
+    border-radius: 5px;
+    box-shadow: $box-shadow-3;
+    color: $color-white;
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    padding: 2rem;
+    min-width: 25rem;
+
+    &__icon {
+        margin-right: 1rem;
+        width: 3rem;
+        height: 3rem;
+        border: 1.4px solid $color-white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $color-white;
+
+        &--fail {
+            background-color: transparent;
+        }
+    }
+
+    &--success {
+        background-color: $color-green;
+    }
+
+    &--fail {
+        background-color: $color-red;
+    }
+}

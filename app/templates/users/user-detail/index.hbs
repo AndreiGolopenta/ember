@@ -17,4 +17,8 @@
     {{user-posts user=user handleDeletePost=(action "deletePost")}}
 </div>
 
+{{#if popUp}}
+    {{pop-up message=message messageType=messageType}}
+{{/if}}
+
 {{outlet}}
