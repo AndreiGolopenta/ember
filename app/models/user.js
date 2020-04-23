@@ -9,4 +9,5 @@ export default Model.extend({
     email: attr('string'),
     points: attr('number'),
     online: attr('boolean'),
+    compare: attr('boolean'),
 });

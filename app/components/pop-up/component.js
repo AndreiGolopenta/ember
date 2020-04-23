@@ -1,13 +1,24 @@
 import Ember from 'ember';
 
-const { Component, computed, get } = Ember;
+const {
+    Component,
+    computed,
+    get,
+    inject: { service },
+} = Ember;
 
 export default Component.extend({
-    classNameBindings: ['successOrFail:pop-up:pop-up', 'successOrFail:pop-up--success:pop-up--fail'],
+    classNameBindings: [
+        'successOrFail:pop-up:pop-up',
+        'successOrFail:pop-up--success:pop-up--fail',
+    ],
 
-    successOrFail: computed('messageType', {
+    popUpService: service('pop-up'),
+
+    successOrFail: computed('popUpService.messageType', {
         get() {
-            const messageType = get(this, 'messageType');
+            const popUpService = get(this, 'popUpService');
+            const messageType = popUpService.messageType;
             return messageType === 'success' ? true : false;
         },
     }),

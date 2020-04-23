@@ -1,0 +1,21 @@
+{{#each compareService.users as |user|}}
+    <li class="compare-users__entry">
+        <span class="compare-users__entry__data">
+            {{user.id}} {{user.firstName}}
+        </span>
+        <span class="compare-users__entry__close-btn" {{action "removeUser" user}}>
+            &#x2715;
+        </span>
+    </li>
+{{/each}}
+<li>
+    {{#link-to "users.compare" class="compare-users__btn"}}
+        Compare Users
+    {{/link-to}}
+</li>
+
+<div>
+{{#if popUpService.popUp}}
+    {{pop-up message=message messageType=messageType}}
+{{/if}}
+</div>

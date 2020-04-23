@@ -17,7 +17,7 @@
     {{user-posts user=user handleDeletePost=(action "deletePost")}}
 </div>
 
-{{#if popUp}}
+{{#if popUpService.popUp}}
     {{pop-up message=message messageType=messageType}}
 {{/if}}
 

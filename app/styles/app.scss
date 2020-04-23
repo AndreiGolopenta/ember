@@ -124,10 +124,7 @@ body {
     align-items: center;
     border-radius: 5px;
     margin-bottom: 3rem;
-
-    & > * {
-        cursor: pointer;
-    }
+    position: relative;
 
     &__content,
     &__header {
@@ -135,15 +132,48 @@ body {
         display: flex;
         padding: 1rem;
         border-bottom: 1px solid rgba($color-text, 0.3);
+        position: relative;
 
         &--last {
             border-bottom: none;
         }
     }
 
+    &__compare {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0.8rem;
+        cursor: pointer;
+
+        &:hover {
+            &::before {
+                content: 'Compare';
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                padding-left: 0.5rem;
+                width: 6em;
+                height: 5rem;
+                position: absolute;
+                top: -2rem;
+                left: -8rem;
+                font-size: 1.2rem;
+                background-color: $color-blue-2;
+                color: $color-white;
+                clip-path: polygon(0 25%, 74% 25%, 100% 50%, 74% 75%, 0 75%);
+            }
+        }
+    }
+
     &__user-name {
         margin-left: 2rem;
         flex: 1;
+
+        a {
+            text-decoration: none;
+            color: $color-text;
+        }
     }
 
     &__user-status {
@@ -699,5 +729,111 @@ body {
 
     &--fail {
         background-color: $color-red;
+    }
+}
+
+.compare-users {
+    list-style-type: none;
+    font-size: 1.6rem;
+    position: absolute;
+    top: 0;
+    left: calc(100% + 3rem);
+    box-shadow: $box-shadow-3;
+    padding: 1rem;
+    min-width: 15rem;
+
+    &__entry {
+        padding: 0.2rem;
+        position: relative;
+        border: 1.2px solid $color-text;
+        border-radius: 4px;
+        margin-bottom: 0.8rem;
+
+        &__data {
+            margin-left: 0.5rem;
+        }
+
+        &__close-btn {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translate(20%, -20%);
+            background-color: $color-red;
+            color: $color-white;
+            padding: 0.3rem;
+            border-radius: 4px;
+            width: 1.8rem;
+            height: 1.8rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.1rem;
+            transition: all 0.1s ease-in-out;
+            cursor: pointer;
+
+            &:hover {
+                transform: translate(20%, -20%) scale(1.07);
+            }
+        }
+    }
+
+    &__btn {
+        display: block;
+        padding: 0.7rem 1.5rem;
+        margin-top: 0.5rem;
+        border: 1.2px solid $color-blue-2;
+        border-radius: 4px;
+        color: $color-blue-2;
+        font-size: 1.4rem;
+        cursor: pointer;
+        text-decoration: none;
+
+        &:hover {
+            background-color: rgba($color-blue-2, 0.1);
+        }
+    }
+}
+
+.users-compare {
+    font-size: 1.6rem;
+    margin-top: 4rem;
+    padding: 2rem;
+    box-shadow: $box-shadow-2;
+    height: fit-content;
+    border-radius: 5px;
+    color: $color-text;
+
+    &__title {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    &__container {
+        display: flex;
+    }
+
+    &__prop {
+        padding: 1rem 2rem;
+        border-bottom: 1px solid rgba($color-text, 0.2);
+    }
+
+    &__go-back {
+        @include button($color-blue-2);
+        position: fixed;
+        left: 6rem;
+        bottom: 8rem;
+        text-decoration: none;
+    }
+
+    &__remove-user {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem;
+
+        button {
+            @include button($color-blue-2);
+        }
     }
 }

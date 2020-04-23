@@ -1,6 +1,11 @@
 import Ember from 'ember';
-
-const { Controller, computed, get, set } = Ember;
+const {
+    Controller,
+    computed,
+    get,
+    set,
+    inject: { service },
+} = Ember;
 
 export default Controller.extend({
     queryParams: ['sortBy'],
@@ -9,6 +14,15 @@ export default Controller.extend({
     page: 1,
     pageSlice: 0,
     numberOfPages: null,
+    compareService: service('compare'),
+
+    showCompareMini: computed('compareService.users.[]', {
+        get() {
+            const compareService = get(this, 'compareService');
+            const length = compareService.users.length;
+            return length ? true : false;
+        },
+    }),
 
     lastIndex: computed('model.users.[]', {
         get() {
@@ -57,10 +71,6 @@ export default Controller.extend({
     }),
 
     actions: {
-        viewUserDetail(user) {
-            this.transitionToRoute('users.user-detail', user);
-        },
-
         changePage(page) {
             const pageSlice = get(this, 'pageSlice');
             const numberOfPages = get(this, 'numberOfPages');

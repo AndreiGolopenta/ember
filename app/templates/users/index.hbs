@@ -9,9 +9,12 @@
             <div class="user-list__user-status--header">Status</div>
         </li>
         {{#each users as |user index|}}
-            {{list-entry user=user click=(action "viewUserDetail" user)}}
+            {{list-entry user=user}}
         {{/each}}
         {{app-pagination page=page numberOfPages=numberOfPages handleChangePage=(action "changePage")}}
+        {{#if showCompareMini}}
+            {{users-compare-mini}}
+        {{/if}}
     </ul>
 {{else}}
     {{empty-list}}

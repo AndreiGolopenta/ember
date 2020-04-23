@@ -1,0 +1,32 @@
+<h2 class="users-compare__title">Compare Users</h2>
+{{#if show}}
+    <div class="users-compare__container">
+        <div>
+            <div class="users-compare__prop"><strong>First Name</strong></div>
+            <div class="users-compare__prop"><strong>Last Name</strong></div>
+            <div class="users-compare__prop"><strong>Email</strong></div>
+            <div class="users-compare__prop"><strong>Points</strong></div>
+            <div class="users-compare__prop"><strong>Status</strong></div>
+            <div class="users-compare__prop"><strong>Posts</strong></div>
+        </div>
+        {{#each compareService.users as |user|}}
+            <div>
+                <div class="users-compare__prop">{{user.firstName}}</div>
+                <div class="users-compare__prop">{{user.lastName}}</div>
+                <div class="users-compare__prop">{{user.email}}</div>
+                <div class="users-compare__prop">{{user.points}}</div>
+                <div class="users-compare__prop">{{if user.online "Online" "Offline"}}</div>
+                <div class="users-compare__prop">{{user.posts.length}}</div>
+                <div class="users-compare__remove-user">
+                    <button {{action "removeUser" user}}>Remove User</button>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+{{else}}
+    <div>No Users To Compare. Go back and add users</div>
+{{/if}}
+
+{{#link-to "users" class="users-compare__go-back"}}
+    Go Back
+{{/link-to}}

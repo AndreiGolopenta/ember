@@ -1,6 +1,18 @@
 <div class="user-list__user-name">
-    {{user.id}} - {{fullName}}
+    {{#link-to "users.user-detail" user}}
+        {{user.id}} - {{fullName}}
+    {{/link-to}}
 </div>
 <div class={{if user.online "user-list__user-status--online" "user-list__user-status--offline"}}>
     {{online-status user.online}}
 </div>
+
+{{#unless user.compare}}
+    {{input class="user-list__compare" checked=user.compare type="checkbox" click=(action "compare")}}
+{{else}}
+    {{input class="user-list__compare" checked=user.compare type="checkbox" click=(action "compare")}}
+{{/unless}}
+
+{{#if popUpService.popUp}}
+    {{pop-up message=message messageType=messageType}}
+{{/if}}

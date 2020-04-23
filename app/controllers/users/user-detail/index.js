@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import PopUp from '../../../mixins/show-hide-pop-up';
 
 const {
     Controller,
@@ -7,20 +8,10 @@ const {
     set,
 } = Ember;
 
-export default Controller.extend({
+export default Controller.extend(PopUp, {
     user: alias('model'),
     title: '',
     body: '',
-    message: '',
-    messageType: '',
-    popUp: false,
-
-    showHidePopUp(message, messageType) {
-        set(this, 'messageType', messageType);
-        set(this, 'popUp', true);
-        set(this, 'message', message);
-        setTimeout(() => set(this, 'popUp', false), 3000);
-    },
 
     actions: {
         handleGoBack() {
