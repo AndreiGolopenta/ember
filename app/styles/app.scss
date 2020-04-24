@@ -243,6 +243,7 @@ body {
     height: 4.5rem;
     display: flex;
     align-items: center;
+    z-index: 4;
 
     &__search {
         flex: 1;
