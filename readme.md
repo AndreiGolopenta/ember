@@ -24,7 +24,8 @@ __Screenshot__
 
 
 ## Requirements
-* JSON Server
+
+### Node version 10.19.0
 
 ### JSON Server
 Install JSON Server : 
@@ -32,14 +33,20 @@ Install JSON Server :
 npm install -g json-server
 ```
 
+### bower
+Install bower global:
+```cli
+npm install -g bower
+```
+
 ## Project Dependencies
 `npm install`
+`bower install`
 
 ## Running the project
 ```cli
 json-server --watch db.json
 ```
 ```cli
-ember s
-```
+npm start
 ```
