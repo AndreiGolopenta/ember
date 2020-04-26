@@ -1,12 +1,14 @@
 import { moduleForModel, test } from 'ember-qunit';
+import Ember from 'ember';
 
 moduleForModel('user', 'Unit | Model | user', {
-  // Specify the other units that are required for this test.
-  needs: []
+    needs: ['model:post'],
 });
 
-test('it exists', function(assert) {
-  let model = this.subject();
-  // let store = this.store();
-  assert.ok(!!model);
+test('user relationship', function (assert) {
+    const User = this.store().modelFor('user');
+    const relationship = Ember.get(User, 'relationshipsByName').get('posts');
+
+    assert.equal(relationship.key, 'posts');
+    assert.equal(relationship.kind, 'hasMany');
 });
