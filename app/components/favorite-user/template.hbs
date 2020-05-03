@@ -1,0 +1,15 @@
+<li><strong>First Name: </strong>{{user.firstName}}</li>
+<li><strong>Last Name: </strong>{{user.lastName}}</li>
+<li><strong>Email: </strong>{{user.email}}</li>
+<li><strong>Points: </strong>{{user.points}}</li>
+<li><strong>Online Status: </strong>{{user.online}}</li>
+<li><strong>Posts: </strong>{{user.posts.length}}</li>
+<li class="favorite__actions">
+    <button class="favorite__details">
+        {{#link-to "users.user-detail" user}}Details{{/link-to}}
+    </button>
+    <button class="favorite__remove" {{action "remove"}}>
+        Remove from Favorite
+    </button>
+</li>
+{{yield}}

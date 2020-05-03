@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ChangePage from '../../utils/change-page';
 const {
     Controller,
     computed,
@@ -72,20 +73,7 @@ export default Controller.extend({
 
     actions: {
         changePage(page) {
-            const pageSlice = get(this, 'pageSlice');
-            const numberOfPages = get(this, 'numberOfPages');
-            const actualPage = pageSlice / 8 + 1;
-            if (!page) {
-                return set(this, 'page', actualPage);
-            } else if (page > numberOfPages) {
-                return set(this, 'page', actualPage);
-            } else if (page < 1) {
-                return set(this, 'page', actualPage);
-            } else {
-                const pageSlice = (page - 1) * 8;
-                set(this, 'pageSlice', pageSlice);
-                set(this, 'page', page);
-            }
+            ChangePage.call(this, page, 8);
         },
     },
 });

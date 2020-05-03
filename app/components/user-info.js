@@ -7,14 +7,6 @@ export default Component.extend({
     tagName: 'ul',
     deleteBolean: false,
 
-    fullName: computed('user.firstName', 'user.lastName', {
-        get() {
-            const firstName = get(this, 'user.firstName');
-            const lastName = get(this, 'user.lastName');
-            return `${firstName} ${lastName}`;
-        },
-    }),
-
     modalClass: computed('deleteBolean', {
         get() {
             const deleteBolean = get(this, 'deleteBolean');

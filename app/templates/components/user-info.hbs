@@ -1,6 +1,6 @@
 <li class="user-info__li">
     <strong>User:</strong>
-    {{fullName}}
+    {{user.fullName}}
 </li>
 <li class="user-info__li">
     <strong>Email: </strong>{{user.email}}
@@ -19,7 +19,7 @@
 
 <div class={{if deleteBolean "modal--active" "modal"}}>
     <div class={{modalClass}}>
-        <p class="modal__text">Are you sure you want to delete user: Test user <strong>{{fullName}}</strong> ?</p>
+        <p class="modal__text">Are you sure you want to delete user <strong>{{user.fullName}}</strong> ?</p>
         <div class="modal__actions">
             <button class="modal__btn-cancel" {{action "cancelRemove"}}>Cancel</button>
             <button class="modal__btn-delete" {{action "handleRemoveUser" user}}>Delete</button>

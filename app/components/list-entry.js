@@ -13,18 +13,11 @@ export default Component.extend(PopUp, {
     classNames: ['user-list__content'],
     classNameBindings: ['lastComponent:user-list__content--last'],
     compareService: service('compare'),
+    favoriteService: service('favorite'),
     howManyUsersInCompare: computed('compareService.users.[]', {
         get() {
             const compareService = get(this, 'compareService');
             return compareService.users.get('length');
-        },
-    }),
-
-    fullName: computed('user.firstName', 'user.lastName', {
-        get() {
-            const firstName = get(this, 'user.firstName');
-            const lastName = get(this, 'user.lastName');
-            return `${firstName} ${lastName}`;
         },
     }),
 
@@ -34,7 +27,7 @@ export default Component.extend(PopUp, {
             const compareValue = user.get('compare');
             const howManyUsersInCompare = get(this, 'howManyUsersInCompare');
             const compareService = get(this, 'compareService');
-            const fullName = get(this, 'fullName');
+            const fullName = user.get('fullName');
             if (howManyUsersInCompare < 4) {
                 set(user, 'compare', !compareValue);
                 if (!compareValue) {
@@ -53,6 +46,26 @@ export default Component.extend(PopUp, {
                 event.preventDefault();
                 this.showHidePopUp(
                     `Only four users can be compared at once.`,
+                    'fail'
+                );
+            }
+        },
+
+        addToFavorite() {
+            const favoriteService = this.get('favoriteService');
+            const user = this.get('user');
+            const favorite = user.get('favorite');
+            user.set('favorite', !favorite);
+            if (!favorite) {
+                favoriteService.add(user);
+                this.showHidePopUp(
+                    `${user.get('fullName')} was added to favorites`,
+                    'success'
+                );
+            } else {
+                favoriteService.remove(user);
+                this.showHidePopUp(
+                    `${user.get('fullName')} was removed from favorites`,
                     'fail'
                 );
             }

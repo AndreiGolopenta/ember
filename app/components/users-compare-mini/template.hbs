@@ -9,9 +9,15 @@
     </li>
 {{/each}}
 <li>
-    {{#link-to "users.compare" class="compare-users__btn"}}
-        Compare Users
-    {{/link-to}}
+    {{#if showButton}}
+        {{#link-to "users.compare" class="compare-users__btn"}}
+            Compare Users
+        {{/link-to}}
+    {{else}}
+        <button class="compare-users__btn compare-users__btn--disabled" {{action "showMessage"}}>
+            Compare Users
+        </button>
+    {{/if}}
 </li>
 
 <div>

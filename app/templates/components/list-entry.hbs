@@ -1,7 +1,10 @@
 <div class="user-list__user-name">
     {{#link-to "users.user-detail" user}}
-        {{user.id}} - {{fullName}}
+        {{user.id}} - {{user.fullName}}
     {{/link-to}}
+</div>
+<div class="user-list__user-favorites" {{action "addToFavorite"}}>
+    {{if user.favorite "❤️" "🖤"}}
 </div>
 <div class={{if user.online "user-list__user-status--online" "user-list__user-status--offline"}}>
     {{online-status user.online}}

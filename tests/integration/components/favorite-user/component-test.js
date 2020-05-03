@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('sort-by', 'Integration | Component | sort by', {
+moduleForComponent('favorite-user', 'Integration | Component | favorite user', {
   integration: true
 });
 
@@ -10,16 +10,16 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
 
-  this.render(hbs`{{sort-by sortBy="foo"}}`);
+  this.render(hbs`{{favorite-user}}`);
 
-  assert.equal(this.$('.filter-sort__sort-by__input').val(), 'Foo', 'Uppercase the value');
+  assert.equal(this.$().text().trim(), '');
 
   // Template block usage:" + EOL +
   this.render(hbs`
-    {{#sort-by sortBy="foo"}}
+    {{#favorite-user}}
       template block text
-    {{/sort-by}}
+    {{/favorite-user}}
   `);
 
-  assert.equal(this.$('.filter-sort__sort-by__input').val(), 'Foo', 'Uppercase the value');
+  assert.equal(this.$().text().trim(), 'template block text');
 });

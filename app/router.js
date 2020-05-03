@@ -15,6 +15,7 @@ Router.map(function () {
   this.route('about');
   this.route('add-user');
   this.route('not-found', { path: '/*wildcard' });
+  this.route('favorites');
 });
 
 export default Router;

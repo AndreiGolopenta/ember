@@ -195,6 +195,11 @@ body {
         }
     }
 
+    &__user-favorites {
+        margin-right: 4.7rem;
+        cursor: pointer;
+    }
+
     &__header {
         font-weight: 500;
     }
@@ -707,6 +712,7 @@ body {
     font-size: 1.6rem;
     padding: 2rem;
     min-width: 25rem;
+    z-index: 5;
 
     &__icon {
         margin-right: 1rem;
@@ -793,6 +799,17 @@ body {
         &:hover {
             background-color: rgba($color-blue-2, 0.1);
         }
+
+        &--disabled {
+            padding: 0.7rem 1.47rem;
+            border: 1.2px solid rgba($color-grey-dark-3, 0.5);
+            color: $color-grey-dark-2;
+            background: rgba($color-grey-dark-3, 0.2);
+
+            &:hover {
+                background: rgba($color-grey-dark-3, 0.2);
+            }
+        }
     }
 }
 
@@ -836,5 +853,55 @@ body {
         button {
             @include button($color-blue-2);
         }
+    }
+}
+
+.favorite {
+    font-size: 1.6rem;
+    height: fit-content;
+    width: 106rem;
+
+    &__title {
+        margin: 2.5rem 0;
+        text-align: center;
+    }
+
+    &__users {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__card {
+        width: 32rem;
+        height: 21rem;
+        margin: 1.5rem;
+        padding: 2rem;
+        box-shadow: $box-shadow-3;
+        border-radius: 5px;
+        list-style-type: none;
+    }
+
+    &__actions {
+        margin-top: 1rem;
+    }
+
+    &__details {
+        @include button($color-blue-2);
+
+        a {
+            text-decoration: none;
+            color: $color-blue-2;
+        }
+    }
+
+    &__remove {
+        @include button($color-red);
+    }
+
+    &__message {
+        position: relative;
+        top: -7rem;
+        display: flex;
+        justify-content: center;
     }
 }

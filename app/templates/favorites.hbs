@@ -1,0 +1,23 @@
+<div class="favorite">
+    <h2 class="favorite__title">Favorites Users {{page}}</h2>
+    {{#if favoriteUsers.length}}
+        <div class="favorite__users">
+            {{#each favoriteUsers as |user|}}
+                {{favorite-user user=user removeFromFavorite=(action "handleRemoveFavorite")}}
+            {{/each}}
+        </div>
+        <div class="favorite__pagination">
+            {{app-pagination page=page numberOfPages=numberOfPages handleChangePage=(action "changePage")}}
+        </div>
+    {{else}}
+        <div class="favorite__message">
+            {{empty-list}}
+        </div>
+    {{/if}}
+</div>
+
+{{#if popUpService.popUp}}
+    {{pop-up message=message messageType=messageType}}
+{{/if}}
+
+{{outlet}}

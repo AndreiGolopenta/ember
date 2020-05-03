@@ -2,6 +2,7 @@ import Ember from 'ember';
 import PopUp from '../../mixins/show-hide-pop-up';
 const {
     Component,
+    computed,
     inject: { service },
     get,
     set,
@@ -13,6 +14,13 @@ export default Component.extend(PopUp, {
 
     compareService: service('compare'),
 
+    showButton: computed('compareService.users.[]', {
+        get() {
+            const compareService = this.get('compareService');
+            return compareService.users.length > 1 ? true : false;
+        },
+    }),
+
     actions: {
         removeUser(user) {
             const compareService = get(this, 'compareService');
@@ -23,6 +31,13 @@ export default Component.extend(PopUp, {
             this.showHidePopUp(
                 `${firstName} ${lastName} was removed`,
                 'success'
+            );
+        },
+
+        showMessage() {
+            this.showHidePopUp(
+                'Please select at least two users',
+                'fail'
             );
         },
     },
