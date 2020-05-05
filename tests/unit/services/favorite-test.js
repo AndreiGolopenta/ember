@@ -1,12 +1,14 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('service:favorite', 'Unit | Service | favorite', {
-  // Specify the other units that are required for this test.
-  // needs: ['service:foo']
-});
+moduleFor('service:favorite', 'Unit | Service | favorite', {});
 
-// Replace this with your real tests.
-test('it exists', function(assert) {
-  let service = this.subject();
-  assert.ok(service);
+test('it exists', function (assert) {
+    let service = this.subject();
+    const user = { firstName: 'Foo', lastName: 'Bar' };
+
+    assert.equal(service.users.length, 0, 'Check initial state');
+    service.add(user);
+    assert.equal(service.users.length, 1, 'Check add user');
+    service.remove(user);
+    assert.equal(service.users.length, 0, 'Check remove user');
 });
